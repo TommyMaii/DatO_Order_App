@@ -584,7 +584,8 @@ class _orderPageState extends State<orderPage> {
                                           ),
                                           trailing: ElevatedButton(
                                               style: ElevatedButton.styleFrom(
-                                                  primary: Color(0xff003A3A),
+                                                  backgroundColor:
+                                                      Color(0xff003A3A),
                                                   shape: RoundedRectangleBorder(
                                                       borderRadius:
                                                           BorderRadius.circular(
@@ -622,7 +623,8 @@ class _orderPageState extends State<orderPage> {
                                               0.94,
                                           child: ElevatedButton(
                                               style: ElevatedButton.styleFrom(
-                                                  primary: Color(0xff003A3A),
+                                                  backgroundColor:
+                                                      Color(0xff003A3A),
                                                   shape: RoundedRectangleBorder(
                                                       borderRadius:
                                                           BorderRadius.circular(
