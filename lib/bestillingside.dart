@@ -28,7 +28,7 @@ class _BestillingsideState extends State<BestillingSide> {
   bool isHTML = false;
   final _subjectController = TextEditingController(text: 'Bestilling fra DatO');
   final _recipientController =
-      TextEditingController(text: 'tommymaimai@gmail.com');
+      TextEditingController(text: 'johnny.htn@gmail.com');
   final _bodyController = TextEditingController(
     text: 'Sendt Bestilling fra DatO',
   );

@@ -41,6 +41,8 @@ dependencies:
   open_document: ^1.0.7
   flutter_email_sender: ^6.0.2
   image_picker: ^1.0.7
+  open_file: ^3.1.0
+  dropdown_button2: ^2.3.9
 
 
 dev_dependencies:
@@ -68,7 +70,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - products.json
-  #   - images/a_dot_ham.jpeg
+    - dato.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -137,11 +137,16 @@ class _orderPageState extends State<orderPage> {
     produktNavn = _produktene[0].navn;
   }
 
-  Future<Uint8List> createPDFFile() {
+  Future<Uint8List> createPDFFile() async {
     final pdf = pw.Document();
+    final image = (await rootBundle.load("dato.jpg")).buffer.asUint8List();
     pdf.addPage(pw.Page(
       build: (pw.Context context) {
-        return pw.Center(child: pw.Text(produktNRF + produktNavn + ' 20stk'));
+        return pw.Column(children: [
+          pw.Image(pw.MemoryImage(image),
+              width: 150, height: 150, fit: pw.BoxFit.cover),
+          pw.Text(produktNRF + produktNavn + ' 20stk')
+        ]);
       },
     ));
     return pdf.save();
