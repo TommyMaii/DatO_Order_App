@@ -902,7 +902,7 @@ class alnabruState extends State<alnabru> {
                                             ),
                                             trailing: ElevatedButton(
                                                 style: ElevatedButton.styleFrom(
-                                                    primary: Color(0xff003A3A),
+                                                    backgroundColor: Color(0xff003A3A),
                                                     shape:
                                                         RoundedRectangleBorder(
                                                             borderRadius:
@@ -957,7 +957,7 @@ class alnabruState extends State<alnabru> {
                                             ),
                                             trailing: ElevatedButton(
                                                 style: ElevatedButton.styleFrom(
-                                                    primary: Color(0xff003A3A),
+                                                    backgroundColor: Color(0xff003A3A),
                                                     shape:
                                                         RoundedRectangleBorder(
                                                             borderRadius:
@@ -1017,7 +1017,8 @@ class alnabruState extends State<alnabru> {
                                                 0.94,
                                         child: ElevatedButton(
                                             style: ElevatedButton.styleFrom(
-                                                primary: Color(0xff003A3A),
+                                                backgroundColor:
+                                                    Color(0xff003A3A),
                                                 shape: RoundedRectangleBorder(
                                                     borderRadius:
                                                         BorderRadius.circular(
