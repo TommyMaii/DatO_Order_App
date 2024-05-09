@@ -44,10 +44,12 @@ class alnabruState extends State<alnabru> {
   String produktNavn = "Velg Produkt";
   List<produktene> _produktene = [];
   List Valgteprodukter = [];
+  List ValgtQuantity = [];
   var length = 0;
   final TextEditingController textEditingController = TextEditingController();
   String? selectedValue;
   var indexnumber = 0;
+  String productquantity = '1 stk';
 
   var _items = [
     'AkerBrygge',
@@ -92,6 +94,29 @@ class alnabruState extends State<alnabru> {
     '31'
   ];
 
+  var quantity = [
+    '1 stk',
+    '2 stk',
+    '3 stk',
+    '4 stk',
+    '5 stk',
+    '6 stk',
+    '7 stk',
+    '8 stk',
+    '9 stk',
+    '10 stk',
+    '11 stk',
+    '12 stk',
+    '13 stk',
+    '14 stk',
+    '15 stk',
+    '16 stk',
+    '17 stk',
+    '18 stk',
+    '19 stk',
+    '20 stk',
+  ];
+
   var months = [
     'Januar',
     'Februar',
@@ -122,94 +147,70 @@ class alnabruState extends State<alnabru> {
   Future<Uint8List> createPDFFile() async {
     final pdf = pw.Document();
     final image = (await rootBundle.load("dato.jpg")).buffer.asUint8List();
+
     pdf.addPage(pw.Page(
       build: (pw.Context context) {
-        return pw.Column(
-            crossAxisAlignment: pw.CrossAxisAlignment.start,
-            children: [
-              pw.Padding(
-                padding: pw.EdgeInsets.fromLTRB(0, 0, 20, 20),
-                child: pw.Image(pw.MemoryImage(image),
-                    width: 50,
-                    height: 50,
-                    fit: pw.BoxFit.cover,
-                    alignment: pw.Alignment.topLeft),
-              ),
-              pw.Container(
-                  padding: pw.EdgeInsets.all(10),
-                  child: pw.Table(
-                      border: pw.TableBorder.all(color: PdfColors.black),
-                      defaultVerticalAlignment:
-                          pw.TableCellVerticalAlignment.top,
-                      children: [
-                        pw.TableRow(children: [
-                          pw.Container(
-                              width: 90,
-                              height: 50,
-                              child: pw.Center(
-                                  child: pw.Padding(
-                                      padding: pw.EdgeInsets.all(10),
-                                      child: pw.Text('NRF',
-                                          style: pw.TextStyle(
-                                            fontWeight: pw.FontWeight.bold,
-                                          ))))),
-                          pw.Center(
+        return pw
+            .Column(crossAxisAlignment: pw.CrossAxisAlignment.start, children: [
+          pw.Padding(
+            padding: pw.EdgeInsets.fromLTRB(0, 0, 20, 20),
+            child: pw.Image(pw.MemoryImage(image),
+                width: 50,
+                height: 50,
+                fit: pw.BoxFit.cover,
+                alignment: pw.Alignment.topLeft),
+          ),
+          pw.Container(
+              padding: pw.EdgeInsets.all(10),
+              child: pw.Table(
+                  border: pw.TableBorder.all(color: PdfColors.black),
+                  defaultVerticalAlignment: pw.TableCellVerticalAlignment.top,
+                  children: [
+                    pw.TableRow(children: [
+                      pw.Container(
+                          width: 90,
+                          height: 50,
+                          child: pw.Center(
                               child: pw.Padding(
-                                  padding: pw.EdgeInsets.all(16),
-                                  child: pw.Text('Produkt',
+                                  padding: pw.EdgeInsets.all(10),
+                                  child: pw.Text('NRF',
                                       style: pw.TextStyle(
                                         fontWeight: pw.FontWeight.bold,
-                                        fontSize: 15,
-                                      )))),
-                          pw.Container(
-                              width: 100,
-                              height: 50,
-                              child: pw.Center(
-                                  child: pw.Padding(
-                                      padding: pw.EdgeInsets.all(10),
-                                      child: pw.Text('Antall',
-                                          style: pw.TextStyle(
-                                            fontWeight: pw.FontWeight.bold,
-                                          ))))),
-                        ]),
-                        pw.TableRow(children: [
-                          pw.Center(child: pw.Text(_produktene[0].nrf)),
-                          pw.Center(
-                              child: pw.Text(_produktene[0].navn,
+                                      ))))),
+                      pw.Center(
+                          child: pw.Padding(
+                              padding: pw.EdgeInsets.all(16),
+                              child: pw.Text('Produkt',
                                   style: pw.TextStyle(
+                                    fontWeight: pw.FontWeight.bold,
                                     fontSize: 15,
-                                  ))),
-                          pw.Center(child: pw.Text('20')),
-                        ]),
-                        pw.TableRow(children: [
-                          pw.Center(child: pw.Text(_produktene[2].nrf)),
-                          pw.Center(
-                              child: pw.Text(_produktene[2].navn,
-                                  style: pw.TextStyle(
-                                    fontSize: 15,
-                                  ))),
-                          pw.Center(child: pw.Text('15')),
-                        ]),
-                        pw.TableRow(children: [
-                          pw.Center(child: pw.Text(_produktene[3].nrf)),
-                          pw.Center(
-                              child: pw.Text(_produktene[3].navn,
-                                  style: pw.TextStyle(
-                                    fontSize: 15,
-                                  ))),
-                          pw.Center(child: pw.Text('2')),
-                        ]),
-                        pw.TableRow(children: [
-                          pw.Center(child: pw.Text(_produktene[4].nrf)),
-                          pw.Center(
-                              child: pw.Text(_produktene[4].navn,
-                                  style: pw.TextStyle(
-                                    fontSize: 12,
-                                  ))),
-                          pw.Center(child: pw.Text('26')),
-                        ]),
-                      ])),
-            ]);
+                                  )))),
+                      pw.Container(
+                          width: 100,
+                          height: 50,
+                          child: pw.Center(
+                              child: pw.Padding(
+                                  padding: pw.EdgeInsets.all(10),
+                                  child: pw.Text('Antall',
+                                      style: pw.TextStyle(
+                                        fontWeight: pw.FontWeight.bold,
+                                      ))))),
+                    ]),
+                    for (int i = 0; i < Valgteprodukter.length; i++)
+                      pw.TableRow(children: [
+                        pw.Center(
+                            child: pw.Text(
+                                getTextBeforeFirstSpace(Valgteprodukter[i]))),
+                        pw.Center(
+                            child: pw.Text(
+                                getTextAfterFirstSpace(Valgteprodukter[i]),
+                                style: pw.TextStyle(
+                                  fontSize: 15,
+                                ))),
+                        pw.Center(child: pw.Text(ValgtQuantity[i])),
+                      ]),
+                  ])),
+        ]);
       },
     ));
     return pdf.save();
@@ -368,7 +369,7 @@ class alnabruState extends State<alnabru> {
                               color: Colors.white),
                           child: DropdownButton(
                             isExpanded: true,
-                            items: days.map((String item) {
+                            items: quantity.map((String item) {
                               return DropdownMenuItem(
                                   value: item,
                                   child: Padding(
@@ -381,10 +382,11 @@ class alnabruState extends State<alnabru> {
                             }).toList(),
                             onChanged: (String? newValue) {
                               setState(() {
-                                Day = newValue!;
+                                productquantity = newValue!;
+                                ValgtQuantity.add(productquantity);
                               });
                             },
-                            value: Day,
+                            value: productquantity,
                             borderRadius: BorderRadius.circular(10),
                             underline: Container(),
                           )),
@@ -737,7 +739,7 @@ class alnabruState extends State<alnabru> {
                                                             3))),
                                             onPressed: () {},
                                             child: Text(
-                                              "20 stk",
+                                              ValgtQuantity[index],
                                               style: TextStyle(
                                                   fontSize: 10,
                                                   color: Color(0xffF7F7F7)),
